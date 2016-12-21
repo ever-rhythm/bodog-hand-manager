@@ -1,0 +1,40 @@
+PokerStars Hand #3394546399: Hold'em No Limit ($0.10/$0.25 USD) - 2016/12/05 19:47:23 ET
+Table 'Table' 6-max Seat #3 is the button
+Seat 1: UTG+1 ($24.25 in chips)
+Seat 2: UTG+2 ($9.02 in chips)
+Seat 3: Dealer ($46.40 in chips)
+Seat 4: Small ($24.40 in chips)
+Seat 5: Big ($28.24 in chips)
+Seat 6: UTG ($23.70 in chips)
+Small: posts small blind $0.10
+Big: posts big blind $0.25
+*** HOLE CARDS ***
+Dealt to UTG+1 [Kd 6s]
+UTG: folds 
+UTG+1: folds 
+UTG+2: folds 
+Dealer: raises $0.85 to $0.85
+Small: folds 
+Big: calls $0.60
+*** FLOP *** [Ts Ah 7d]
+Big: checks 
+Dealer: checks 
+*** TURN *** [Ts Ah 7d] [Jc]
+Big: bets $1.00
+Dealer: calls $1.00
+*** RIVER *** [Ts Ah 7d Jc] [9d]
+Big: checks 
+Dealer: checks 
+*** SHOW DOWN ***
+Big: shows [Kh 9s]
+Dealer: shows [Ad Qh]
+Dealer collected $3.61 from pot
+*** SUMMARY ***
+Total pot $3.80 | Rake $0.01
+Board [Ts Ah 7d Jc 9d]
+Seat 1: UTG+1 folded before Flop (didn't bet)
+Seat 2: UTG+2 folded before Flop (didn't bet)
+Seat 3: Dealer (button) showed [Ad Qh]
+Seat 4: Small (small blind) folded before Flop (didn't bet)
+Seat 5: Big (big blind) showed [Kh 9s]
+Seat 6: UTG folded before Flop (didn't bet)
