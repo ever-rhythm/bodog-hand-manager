@@ -21,21 +21,40 @@ class Hand(object):
         self.dictStack = {}
         self.dictAction = {}
 
+        # player info
+        for (k,v) in C.pairPos:
+            self.dictSeat[v] = ''
+            self.dictName[v] = ''
+            self.dictCard[v] = ''
+            self.dictStack[v] = 0
+
+        # street info
         for (k,v) in C.pairStreet:
             self.dictCard[v] = ''
             self.dictAction[v] = {}
             self.dictStack[v] = 0
 
+            # player info on each street
             for (k2,v2) in C.pairPos:
                 self.dictAction[v][v2] = []
-                #self.dictStack[v][v2] = []
                 
-    # todo
+    # todo real rake
     def getRake(self):
         return 0.01
                 
     def getChip(self , flt):
         return '$' + str('%.2f'%float(flt))
+
+    def getPayout(self , pos):
+        m = 0
+        for k in self.dictAction:
+            for k2,v2 in self.dictAction[k][pos]:
+                if C.handresult == k2 or C.uncall == k2:
+                    m += U.strToNum(v2)
+                else:
+                    m -= U.strToNum(v2)
+
+        return m
     
     def getCard(self , listCard , bolDivide = False):
         if bolDivide :
@@ -71,6 +90,12 @@ class Hand(object):
 
     # todo date convert
     def getTable(self):
+        '''
+        if not C.co in self.dictSeat or not C.co in self.dictName or not C.co in self.dictStack:
+            print(self.handId)
+            return []
+        '''
+
         listRes = []
         listRes.append( self.lobby + ' Hand #' + self.handId + ': ' + self.game + ' (' + self.getChip(self.sb) + '/' + self.getChip(self.bb) + ' USD) - ' + str.replace(self.date,'-','/') + ' ET' )
         listRes.append( 'Table ' + '\'' + self.table + '\'' + ' ' + str(len(self.dictSeat)) + '-max Seat #' + self.dictSeat[C.btn] + ' is the button' )
@@ -136,11 +161,12 @@ class Hand(object):
                
         return U.ret(listRes)
 
-    # todo
     def getSummary(self):
+        #print(self.dictStack)
+
         listRes = []
         listRes.append( C.summary )
-        listRes.append( 'Total pot ' + self.getChip(self.dictStack[C.river]) + ' | Rake ' + self.getChip(self.getRake()) )
+        listRes.append( 'Total pot ' + self.getChip(self.dictStack[C.showdown]) + ' | Rake ' + self.getChip(self.getRake()) )
         for (k,v) in reversed(C.pairStreet):
             if len(self.dictCard[v]) != 0:
                 listRes.append( 'Board ' + self.getCard(self.dictCard[v]) )
@@ -157,15 +183,15 @@ class Hand(object):
                 strRes += '(button)' + ' '
 
             if U.ret(self.dictAction[C.preflop][pos]).find(C.fold) != -1:
-                strRes += 'folded before Flop (didn\'t bet)'
+                strRes += 'folded before Flop (didn\'t bet)' + ' ' + self.getCard(self.dictCard[pos])
             elif U.ret(self.dictAction[C.flop][pos]).find(C.fold) != -1:
-                strRes += 'folded on the Flop'
+                strRes += 'folded on the Flop' + ' ' + self.getCard(self.dictCard[pos])
             elif U.ret(self.dictAction[C.turn][pos]).find(C.fold) != -1:
-                strRes += 'folded on the Turn'
+                strRes += 'folded on the Turn' + ' ' + self.getCard(self.dictCard[pos])
             elif U.ret(self.dictAction[C.river][pos]).find(C.fold) != -1:
-                strRes += 'folded on the River'
+                strRes += 'folded on the River' + ' ' + self.getCard(self.dictCard[pos])
             else:
-                strRes += 'showed ' + self.getCard(self.dictCard[pos])
+                strRes += 'showed' + ' ' + self.getCard(self.dictCard[pos])
                 
             listRes.append(strRes)
 

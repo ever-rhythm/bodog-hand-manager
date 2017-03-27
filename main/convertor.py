@@ -1,6 +1,7 @@
 
 from main.const import Const as C
 
+# convert origin hand info
 class Convertor(object):
     
     def __init__(self):

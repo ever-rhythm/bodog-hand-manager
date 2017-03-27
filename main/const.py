@@ -12,15 +12,19 @@ class Const(object):
 
     pairStreet = [ (preflop,preflop) , (flop,flop) , (turn,turn) , (river,river) , (showdown,showdown) ]
 
-    sd = 'Showdown'
-    nsd = 'Does not show'
-    sbsb = 'Small Blind : Small Blind'
-    bbbb = 'Big Blind : Big blind'
+    sd = ': Showdown'
+    nsd = ': Does not show'
+    sbsb = 'small blind'
+    bbbb = 'big blind'
     seat = 'Seat '
     me = '[ME]' 
     dealt = 'dealt'
     pot = 'Pot'
+
+    uncall = 'uncalled'
     handresult = 'Hand result'
+    deposit = 'deposit'
+    posts = 'Posts'
 
     pairBlind = [ (sbsb,'sb'),(bbbb,'bb') ]
 
@@ -38,8 +42,9 @@ class Const(object):
     call = 'Calls'
     bet = 'Bets'
     raises = 'Raises'
+    allin = 'All-in'
 
-    pairAction = [ (check,check),(fold,fold),(call,call),(bet,bet),(raises,raises) ]
+    pairAction = [ (check,check),(fold,fold),(call,call),(bet,bet),(raises,raises),(allin,allin) ]
 
     hero = 'Hero'
     player = 'Player'
